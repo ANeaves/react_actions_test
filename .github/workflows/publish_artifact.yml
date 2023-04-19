@@ -45,6 +45,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: build
+
+    strategy:
+      matrix:
+        node-version: [15.x, 16.x]
+
     steps:
       - name: Save Build Results ${{ matrix.node-version }}
         uses: actions/download-artifact@v3
