@@ -19,7 +19,10 @@
 
 name: publish_build
 run-name: Building and Publishing static site
-on: [push]
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
