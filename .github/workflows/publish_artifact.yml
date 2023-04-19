@@ -53,14 +53,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: react_build
-          path: ./build
+          path: build
       - name: Display Directory
         run: ls -R
       - name: Zip Build
         uses: thedoctor0/zip-release@0.7.1
         with:
           filename: react_build.zip
-          path: react_build
+          path: build
       - name: Save Zip Artifact
         uses: actions/upload-artifact@v3
         with:
