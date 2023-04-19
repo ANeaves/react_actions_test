@@ -53,6 +53,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: react_build
+      - name: Display Directory
+        run: ls -R
       - name: Zip Build
         uses: thedoctor0/zip-release@0.7.1
         with:
