@@ -67,6 +67,6 @@ jobs:
           name: build_${{ matrix.node-version }}.zip
           path: build_${{ matrix.node-version }}.zip
       - name: Release Aritfact
-        uses: ncipollo/release-action
+        uses: ncipollo/release-action@v1.12.0
         with:
           artifacts: build_${{ matrix.node-version }}.zip
