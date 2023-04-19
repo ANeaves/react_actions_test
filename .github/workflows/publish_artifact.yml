@@ -25,7 +25,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [15.x, 16.x]
+        node-version: 16.x
 
     steps:
       - uses: actions/checkout@v3
@@ -39,7 +39,7 @@ jobs:
       - name: Save Build Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: build_${{ matrix.node-version }}
+          name: react_build
           path: build
 
   release:
@@ -48,24 +48,24 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [15.x, 16.x]
+        node-version: 16.x
 
     steps:
       - name: Get Build Results ${{ matrix.node-version }}
         uses: actions/download-artifact@v3
         with:
-          name: build_${{ matrix.node-version }}
+          name: react_build
       - name: Zip Build
         uses: thedoctor0/zip-release@0.7.1
         with:
-          filename: build_${{ matrix.node-version }}.zip
-          path: build_${{ matrix.node-version }}
-      - name: Safe Zip Artifact
+          filename: react_build.zip
+          path: react_build
+      - name: Save Zip Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: build_${{ matrix.node-version }}.zip
-          path: build_${{ matrix.node-version }}
+          name: react_build.zip
+          path: react_build.zip
       - name: Release Aritfact
         uses: ncipollo/release-action@v1.12.0
         with:
-          artifacts: build_${{ matrix.node-version }}.zip
+          artifacts: react_build.zip
