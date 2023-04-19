@@ -51,7 +51,7 @@ jobs:
         node-version: [15.x, 16.x]
 
     steps:
-      # - name: Get Build Results ${{ matrix.node-version }}
+
       - uses: actions/download-artifact@v3
         with:
           name: build_${{ matrix.node-version }}
