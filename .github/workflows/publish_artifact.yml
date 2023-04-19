@@ -53,6 +53,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: react_build
+          path: .
       - name: Display Directory
         run: ls -R
       - name: Zip Build
